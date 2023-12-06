@@ -1,3 +1,18 @@
-import { Routes } from '@angular/router';
+import {Routes} from '@angular/router';
 
-export const routes: Routes = [];
+import {MainLayoutComponent} from "./layouts";
+import {PostsPageComponent, UserDetailsPageComponent, UsersPageComponent} from "./pages";
+
+export const routes: Routes = [
+  {
+    path: '', component: MainLayoutComponent, children: [
+      {path: '', redirectTo: 'users', pathMatch: 'full'},
+      {
+        path: 'users', component: UsersPageComponent, children: [
+          {path: ':id', component: UserDetailsPageComponent}
+        ]
+      },
+      {path: 'posts', component: PostsPageComponent}
+    ]
+  }
+];
