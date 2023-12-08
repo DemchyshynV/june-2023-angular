@@ -12,13 +12,15 @@ export class BComponent {
   constructor(private conterService: ConterService) {
   }
 
-  inc():void {
-    this.conterService.inc()
+  inc(): void {
+    this.conterService.count.next(this.conterService.count.value + 1)
   }
-  dec():void {
-    this.conterService.dec()
+
+  dec(): void {
+    this.conterService.count.next(this.conterService.count.value - 1)
   }
-  reset():void {
-    this.conterService.reset()
+
+  reset(): void {
+    this.conterService.count.next(0)
   }
 }

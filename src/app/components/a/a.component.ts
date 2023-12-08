@@ -15,8 +15,6 @@ export class AComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.conterService.getCount().subscribe(value => {
-      this.count = value
-    })
+    this.conterService.count.subscribe(value => this.count = value)
   }
 }
