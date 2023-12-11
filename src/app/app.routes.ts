@@ -2,6 +2,7 @@ import {Routes} from '@angular/router';
 
 import {MainLayoutComponent} from "./layouts";
 import {PostsPageComponent, UserDetailsPageComponent, UsersPageComponent} from "./pages";
+import {userDetailsResolver} from "./services/resolvers/user-details.resolver";
 
 export const routes: Routes = [
   {
@@ -9,7 +10,7 @@ export const routes: Routes = [
       {path: '', redirectTo: 'users', pathMatch: 'full'},
       {
         path: 'users', component: UsersPageComponent, children: [
-          {path: ':id', component: UserDetailsPageComponent}
+          {path: ':id', resolve: {userData: userDetailsResolver}, component: UserDetailsPageComponent}
         ]
       },
       {path: 'posts', component: PostsPageComponent}
